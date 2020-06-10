@@ -1,0 +1,73 @@
+JSP：
+	java server pages（java服务器页面）
+	1.作用：使得程序员专注于页面的编写，可以被tomcat翻译成对应的可执行的java文件。
+	2.构成：
+		1.本质上是一个servlet
+		2.主体内容可以是html代码
+		3.也可以在主体中随处插入java代码
+		4.提供了九大内置对象方便程序员使用，其中有四个对象可以作为四大作用域使用。
+		
+	3.执行流程：
+		1.浏览器发送请求，访问jsp页面
+		2.应用服务器接收请求，jspServlet会帮助我们查找对应的jsp文件。
+		3.应用服务器将.jsp文件翻译成.java文件。
+		4.jvm会将java文件编译成class文件。
+		5.应用服务器运行class文件，生成动态的html页面。
+		6.应用服务器将动态生成的页面发送给浏览器。
+		7.浏览器接收html页面，解析展示。
+		
+	4.jsp的指令：
+		作用：用来声明jsp页面的一些属性和动作
+		格式：<%@指令名称 属性="值"  属性="值" %>
+		常见的指令：
+			1.page：声明jsp页面的属性
+				language：声明jsp页面使用的嵌套语言
+				contentType：设置响应流的数据类型以及编码格式
+				pageEncoding：设置jsp页面的编码
+				import：导包
+				
+				session：设置jsp页面是否可以使用seesion内置对象，默认开启
+				orPaerrorPage：设置jsp页面出现错误会跳转到哪里
+				isErrge：是否是错误页面
+			2.include：静态包含
+				格式：<%@include file="相对路径或者内部路径"%>
+				作用：将其他页面的内容包含进来，一起进行编译和运行。
+			3.taglib：导入标签库
+				格式：<%@taglib prefix="前缀名" uri="命名空间"%>
+				作用：引入标签库到本页面，本页面中可以使用<前缀名:标签....>
+				
+	5.jsp的脚本：
+		<%...%>：编写java代码，作为页面的脚本。
+		<%=...%>：输出表达式，简化out.write()。
+		<%!...%>：全局声明，只能用于声明变量，会在所有脚本执行之前执行，可以在页面任意位置使用这些变量。
+		
+	6.jsp注释：
+		html注释：<!--    -->
+			页面上不可见，在html源码、java代码可见。
+		java注释：//    /*  */    /**  */
+			只在java代码可见。
+		jsp注释：<%--   --%>
+			只在jsp页面可见，翻译成java文件之后不可见。
+			
+	7.jsp九大内置对象：
+		对象名		内置的对象		数据类型
+		输出对象		out				JspWriter
+		请求对象		request			HttpServletRequest	
+		响应对象		response		HttpServletResponse
+		会话对象		session			HttpSession
+		应用对象		application		ServletContext
+		页面上下文	pageContext		PageContext
+		
+		页面对象		page			Servlet（this）
+		配置对象		config			ServletConfig
+		异常对象		exception		Throwable
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
